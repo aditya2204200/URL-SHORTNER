@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { queryClient } from "../main";
 
 const UrlForm = () => {
-  const [url, setUrl] = useState("https://www.google.com");
+  const [url, setUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState(null);
@@ -37,25 +37,27 @@ const UrlForm = () => {
   };
 
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100%", marginBottom: "30px" }}>
+      {/* Form with Proper Gaps */}
       <form
         onSubmit={handleSubmit}
         style={{
           display: "flex",
-          gap: "12px",
+          gap: "20px",
           alignItems: "flex-end",
           flexWrap: "wrap",
+          marginBottom: "20px",
         }}
       >
-        {/* URL Input */}
-        <div style={{ flex: "2", minWidth: "260px" }}>
+        {/* Main URL Input */}
+        <div style={{ flex: "2", minWidth: "250px" }}>
           <label
             style={{
               display: "block",
-              fontSize: "13px",
+              fontSize: "14px",
               fontWeight: "600",
-              color: "#cbd5e1",
-              marginBottom: "6px",
+              color: "#94a3b8",
+              marginBottom: "8px",
             }}
           >
             Enter your URL
@@ -68,10 +70,10 @@ const UrlForm = () => {
             required
             style={{
               width: "100%",
-              padding: "10px 14px",
-              backgroundColor: "#0f172a",
+              padding: "14px 16px",
+              backgroundColor: "#1e293b",
               border: "1px solid #334155",
-              borderRadius: "8px",
+              borderRadius: "10px",
               color: "#ffffff",
               fontSize: "14px",
               outline: "none",
@@ -79,16 +81,16 @@ const UrlForm = () => {
           />
         </div>
 
-        {/* Custom Slug (Visible if logged in) */}
+        {/* Custom Slug */}
         {isAuthenticated && (
           <div style={{ flex: "1", minWidth: "180px" }}>
             <label
               style={{
                 display: "block",
-                fontSize: "13px",
+                fontSize: "14px",
                 fontWeight: "600",
-                color: "#cbd5e1",
-                marginBottom: "6px",
+                color: "#94a3b8",
+                marginBottom: "8px",
               }}
             >
               Custom URL (optional)
@@ -100,10 +102,10 @@ const UrlForm = () => {
               placeholder="custom-slug"
               style={{
                 width: "100%",
-                padding: "10px 14px",
-                backgroundColor: "#0f172a",
+                padding: "14px 16px",
+                backgroundColor: "#1e293b",
                 border: "1px solid #334155",
-                borderRadius: "8px",
+                borderRadius: "10px",
                 color: "#ffffff",
                 fontSize: "14px",
                 outline: "none",
@@ -112,18 +114,18 @@ const UrlForm = () => {
           </div>
         )}
 
-        {/* Submit Button */}
+        {/* Shorten Button */}
         <button
           type="submit"
           disabled={loading}
           style={{
-            height: "42px",
-            padding: "0 22px",
+            height: "50px",
+            padding: "0 28px",
             backgroundColor: "#2563eb",
             color: "#ffffff",
             fontWeight: "600",
-            fontSize: "14px",
-            borderRadius: "8px",
+            fontSize: "15px",
+            borderRadius: "10px",
             border: "none",
             cursor: "pointer",
             whiteSpace: "nowrap",
@@ -133,69 +135,53 @@ const UrlForm = () => {
         </button>
       </form>
 
-      {error && (
-        <div
-          style={{
-            marginTop: "12px",
-            padding: "10px 14px",
-            backgroundColor: "rgba(239, 68, 68, 0.15)",
-            border: "1px solid rgba(239, 68, 68, 0.3)",
-            color: "#f87171",
-            borderRadius: "8px",
-            fontSize: "13px",
-          }}
-        >
-          ⚠️ {error}
-        </div>
-      )}
-
+      {/* Output Short Link Result */}
       {shortUrl && (
         <div
           style={{
-            marginTop: "16px",
-            padding: "14px",
+            padding: "16px",
             backgroundColor: "#0f172a",
             border: "1px solid #334155",
-            borderRadius: "10px",
+            borderRadius: "12px",
+            marginTop: "20px",
           }}
         >
           <p
             style={{
-              fontSize: "11px",
+              fontSize: "12px",
               color: "#94a3b8",
-              marginBottom: "6px",
+              marginBottom: "8px",
+              fontWeight: "600",
               textTransform: "uppercase",
-              letterSpacing: "0.5px",
             }}
           >
-            Your shortened URL:
+            Your Shortened URL:
           </p>
-          <div style={{ display: "flex", gap: "8px" }}>
+          <div style={{ display: "flex", gap: "12px" }}>
             <input
               type="text"
               readOnly
               value={shortUrl}
               style={{
                 flex: 1,
-                padding: "8px 12px",
+                padding: "10px 14px",
                 backgroundColor: "#1e293b",
                 border: "1px solid #334155",
-                borderRadius: "6px",
-                color: "#60a5fa",
-                fontFamily: "monospace",
-                fontSize: "13px",
+                borderRadius: "8px",
+                color: "#38bdf8",
+                fontWeight: "600",
+                fontSize: "14px",
               }}
             />
             <button
               onClick={handleCopy}
               style={{
-                padding: "8px 16px",
+                padding: "10px 20px",
                 backgroundColor: copied ? "#10b981" : "#2563eb",
                 color: "#ffffff",
-                borderRadius: "6px",
+                borderRadius: "8px",
                 border: "none",
                 fontWeight: "600",
-                fontSize: "13px",
                 cursor: "pointer",
               }}
             >

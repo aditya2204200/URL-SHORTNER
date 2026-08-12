@@ -2,12 +2,56 @@
 
 * {
   box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #0f172a;
-  color: #f8fafc;
+/* Force dark theme globally to override white backgrounds */
+html, body, #root {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+  width: 100% !important;
+  background-color: #030712 !important;
+  color: #f8fafc !important;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism 3D Glow Card */
+.glass-3d-card {
+  background: rgba(15, 23, 42, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(56, 189, 248, 0.15) !important;
+  transition: all 0.4s ease !important;
+}
+
+.glass-3d-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85), 0 0 50px rgba(56, 189, 248, 0.25) !important;
+}
+
+/* 3D Button Animation */
+.btn-3d-glow {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.6) !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-3d-glow:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  box-shadow: 0 12px 25px -4px rgba(56, 189, 248, 0.7) !important;
+}
+
+/* Floating Animations for 3D Orbs */
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, -40px) scale(1.15); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-50px, 50px) scale(1.2); }
 }
